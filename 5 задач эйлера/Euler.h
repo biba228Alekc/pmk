@@ -22,7 +22,7 @@ unsigned long long Problem_2(const unsigned int value_);
 unsigned long long Problem_3(const unsigned long long value_);
 
 /*
-* @breaf нахождение самого большого палиндрома, сделанный из произведения двух 3-х значных чисел
+* @breaf найти наиболее значительного палиндрома, сделанного из произведения двух 3-х значных чисел
 * @return наибольший палиндром
 */
 unsigned long long Problem_4();
