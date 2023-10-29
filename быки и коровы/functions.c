@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #define DIGITS 4
 
@@ -9,15 +10,15 @@ void generateSecretNumber(int secret[])
 {
     srand(time(NULL));
 
-    secret[0] = rand() % 9 + 1; // Генерируем первую цифру от 1 до 9
+    secret[0] = rand() % 9 + 1; // ГѓГҐГ­ГҐГ°ГЁГ°ГіГҐГ¬ ГЇГҐГ°ГўГіГѕ Г¶ГЁГґГ°Гі Г®ГІ 1 Г¤Г® 9
 
     for (int i = 1; i < DIGITS; i++) {
         int digit;
         do {
-            digit = rand() % 10; // Генерируем остальные цифры от 0 до 9
-        } while (!isValidDigit(secret, i, digit)); // Убеждаемся, что цифры уникальны
+            digit = rand() % 10; // ГѓГҐГ­ГҐГ°ГЁГ°ГіГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ Г¶ГЁГґГ°Г» Г®ГІ 0 Г¤Г® 9
+        } while (!isValidDigit(secret, i, digit)); // Г“ГЎГҐГ¦Г¤Г ГҐГ¬Г±Гї, Г·ГІГ® Г¶ГЁГґГ°Г» ГіГ­ГЁГЄГ Г«ГјГ­Г»
 
-        secret[i] = digit; // Записываем сгенерированную цифру
+        secret[i] = digit; // Г‡Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г±ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ Г­Г­ГіГѕ Г¶ГЁГґГ°Гі
     }
 }
 
@@ -25,10 +26,10 @@ void generateSecretNumber(int secret[])
 int isValidDigit(int secret[], int index, int digit) {
     for (int i = 0; i < index; i++) {
         if (secret[i] == digit) {
-            return 0; // Цифра уже присутствует в числе
+            return 0; // Г–ГЁГґГ°Г  ГіГ¦ГҐ ГЇГ°ГЁГ±ГіГІГ±ГІГўГіГҐГІ Гў Г·ГЁГ±Г«ГҐ
         }
     }
-    return 1; // Все цифры уникальны
+    return 1; // Г‚Г±ГҐ Г¶ГЁГґГ°Г» ГіГ­ГЁГЄГ Г«ГјГ­Г»
 }
 
 
@@ -38,12 +39,12 @@ void calculateBullsAndCows(int secret[], int guess[], int* bulls, int* cows) {
 
     for (int i = 0; i < DIGITS; i++) {
         if (secret[i] == guess[i]) {
-            (*bulls)++; // Если цифра совпадает по позиции, увеличиваем количество быков
+            (*bulls)++; // Г…Г±Г«ГЁ Г¶ГЁГґГ°Г  Г±Г®ГўГЇГ Г¤Г ГҐГІ ГЇГ® ГЇГ®Г§ГЁГ¶ГЁГЁ, ГіГўГҐГ«ГЁГ·ГЁГўГ ГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЎГ»ГЄГ®Гў
         }
         else {
             for (int j = 0; j < DIGITS; j++) {
                 if (secret[i] == guess[j]) {
-                    (*cows)++; // Увеличиваем количество коров
+                    (*cows)++; // Г“ГўГҐГ«ГЁГ·ГЁГўГ ГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЄГ®Г°Г®Гў
                     break;
                 }
             }
