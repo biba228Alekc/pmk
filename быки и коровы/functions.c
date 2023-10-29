@@ -5,7 +5,7 @@
 #include <locale.h>
 
 #define DIGITS 4
-setlocale(LC_ALL, "Rus");
+
 
 void generateSecretNumber(int secret[])
 {
