@@ -106,16 +106,3 @@ unsigned long long Problem_5(const unsigned int value_)
 	}
 }
 
-unsigned long long Problem_6(const unsigned int n_)
-{
-	unsigned long long int sum_1 = 0;
-	unsigned long long int sum_2 = 0;
-
-	for (unsigned long long int i = 1; i <= n_; ++i)
-	{
-		sum_1 = sum_1 + (i * i);
-		sum_2 = sum_2 + i;
-	}
-
-	return  (sum_2 * sum_2 - sum_1);
-}
