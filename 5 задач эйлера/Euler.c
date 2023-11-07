@@ -2,7 +2,7 @@
 #include<math.h>
 
 #include "Euler.h"
-#include "function.h"
+#include "functions.h"
 
 unsigned long long Problem_1(const unsigned int value_, const int* multiples_, const unsigned int size_)
 {
