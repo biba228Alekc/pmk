@@ -6,19 +6,17 @@
 #pragma warning (disable: 4996)
 
 void writeStringToFile(const char* str, const char* filename) {
-    // Открываем файл для записи
+    // РћС‚РєСЂС‹РІР°РµРј С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё
     FILE* file = fopen(filename, "a+");
 
     if (file == NULL) {
-        printf("Ошибка открытия файла.\n");
+        printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°.\n");
         return;
     }
-
-    // Закрываем файл
     fclose(file);
 }
 
-// Функция для выделения памяти под матрицу размером n x n
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё РїРѕРґ РјР°С‚СЂРёС†Сѓ СЂР°Р·РјРµСЂРѕРј n x n
 double** createMatrix(int n) 
 {
     double** matrix = (double**)malloc(n * sizeof(double*));
@@ -32,7 +30,7 @@ double** createMatrix(int n)
 void write2MATRIXXToFile(double** matrix, int n, const char* filename) {
     FILE* file = fopen("matrixx.txt", "a");
     if (file == NULL) {
-        printf("Ошибка открытия файла.");
+       printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°.");
         return;
     }
 
@@ -43,13 +41,12 @@ void write2MATRIXXToFile(double** matrix, int n, const char* filename) {
         fprintf(file, "\n");
     }
 
-    // Закрываем файл
     fclose(file);
 }
 
 
 
-// Функция для освобождения памяти, выделенной для матрицы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё, РІС‹РґРµР»РµРЅРЅРѕР№ РґР»СЏ РјР°С‚СЂРёС†С‹
 void freeMatrix(double** matrix, int n) {
     for (int i = 0; i < n; i++) {
         free(matrix[i]);
@@ -57,7 +54,7 @@ void freeMatrix(double** matrix, int n) {
     free(matrix);
 }
 
-// Функция для нахождения минора матрицы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРѕСЂР° РјР°С‚СЂРёС†С‹
 void getMinor(double** src, double** dest, int her, int gaf, int n) {
     int i = 0, j = 0;
     for (int r = 0; r < n; r++) {
@@ -73,7 +70,7 @@ void getMinor(double** src, double** dest, int her, int gaf, int n) {
     }
 }
 
-// Функция для нахождения определителя матрицы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РѕРїСЂРµРґРµР»РёС‚РµР»СЏ РјР°С‚СЂРёС†С‹
 double calcDeterminant(double** matrix, int n) {
     if (n == 1) {
         return matrix[0][0];
@@ -94,11 +91,11 @@ double calcDeterminant(double** matrix, int n) {
     return det;
 }
 
-// Функция для нахождения обратной матрицы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹
 double** getInverseMatrix(double** matrix, int n) {
     double det = calcDeterminant(matrix, n);
     if (det == 0) {
-        printf("Матрица вырожденная, обратной матрицы не существует.\n");
+        printf("РњР°С‚СЂРёС†Р° РІС‹СЂРѕР¶РґРµРЅРЅР°СЏ, РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.\n");
         return NULL;
     }
 
@@ -119,7 +116,7 @@ double** getInverseMatrix(double** matrix, int n) {
     return inverseMatrix;
 }
 
-// Функция для вывода матрицы на консоль
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РјР°С‚СЂРёС†С‹ РЅР° РєРѕРЅСЃРѕР»СЊ
 void printMatrix(double** matrix, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -144,10 +141,10 @@ void Fstring(const char* str, const char* fileoname)
 
 void GGG(int n, double** matrix)
 {
-    printf("Введите элементы матрицы:\n");
+    printf("Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚С‹ РјР°С‚СЂРёС†С‹:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            printf_s("Введите значение для %d-го элемента %d-й строки: ", j+1, i + 1);
+           printf_s("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ %d-РіРѕ СЌР»РµРјРµРЅС‚Р° %d-Р№ СЃС‚СЂРѕРєРё: ", j+1, i + 1);
             scanf("%lf", &matrix[i][j]);
         }
     }
@@ -158,7 +155,7 @@ void jjj(double** inverseMatrix, int n)
 {
     if (inverseMatrix != NULL) 
     {
-        printf("Обратная матрица:\n");
+       printf("РћР±СЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р°:\n");
         printMatrix(inverseMatrix, n);
     }
 }
