@@ -9,22 +9,22 @@
 int main() {
     setlocale(LC_ALL, "Rus");
     int size;
-    printf("Введите размер системы: ");
+   printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРёСЃС‚РµРјС‹: ");
     scanf("%d", &size);
 
     double** coefficients = (double**)malloc(size * sizeof(double*));
     double* constants = Array(size);
 
-    printf("Введите коэффициенты системы:\n");
+    printf("Р’РІРµРґРёС‚Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ СЃРёСЃС‚РµРјС‹:\n");
     for (int i = 0; i < size; i++) {
         coefficients[i] = Array(size);
         for (int j = 0; j < size; j++) {
-            printf("Коэффициент a%d%d: ", i + 1, j + 1);
+            printf("РљРѕСЌС„С„РёС†РёРµРЅС‚ a%d%d: ", i + 1, j + 1);
             scanf("%lf", &coefficients[i][j]);
         }
     }
 
-    printf("Введите колонку свободных членов:\n");
+    printf("Р’РІРµРґРёС‚Рµ РєРѕР»РѕРЅРєСѓ СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ:\n");
     for (int i = 0; i < size; i++) {
         printf("b%d: ", i + 1);
         scanf("%lf", &constants[i]);
