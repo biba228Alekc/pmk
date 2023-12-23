@@ -11,7 +11,7 @@
 double* Array(int size) {
     double* array = (double*)malloc(size * sizeof(double));
     if (array == NULL) {
-        printf("Ошибка выделения памяти\n");
+        printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
         exit(1);
     }
     return array;
@@ -62,7 +62,7 @@ double findDeterminant(double** matrix, int size) {
 void System(double** coefficients, double* constants, int size) {
     double determinant = findDeterminant(coefficients, size);
     if (determinant == 0) {
-        printf("Система имеет бесконечное число решений или не имеет решений.\n");
+        printf("РЎРёСЃС‚РµРјР° РёРјРµРµС‚ Р±РµСЃРєРѕРЅРµС‡РЅРѕРµ С‡РёСЃР»Рѕ СЂРµС€РµРЅРёР№ РёР»Рё РЅРµ РёРјРµРµС‚ СЂРµС€РµРЅРёР№.\n");
         return;
     }
 
@@ -82,7 +82,7 @@ void System(double** coefficients, double* constants, int size) {
         free(tempMatrix);
     }
 
-    printf("Решение системы:\n");
+    printf("Р РµС€РµРЅРёРµ СЃРёСЃС‚РµРјС‹:\n");
     for (int i = 0; i < size; i++) {
         printf("x%d = %f\n", i + 1, solutions[i]);
     }
