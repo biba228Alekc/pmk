@@ -9,7 +9,7 @@ int main() {
     setlocale(LC_ALL, "Rus");
 
     int n;
-    printf("Введите размерность матрицы: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°С‚СЂРёС†С‹: ");
     scanf_s("%d", &n);
 
     double** matrix = createMatrix(n);
@@ -19,12 +19,9 @@ int main() {
     double** inverseMatrix = getInverseMatrix(matrix, n);
 
     jjj( inverseMatrix, n);
-
-    char str1[] = "Исходная квадратная матрица размера n.\n";
-    char str2[] = "Обратная матрица к исходной размера n\n";
     FILE* f;
     f = fopen("matrixx.txt", "w");
-    fprintf(f, "%s", "Исходная квадратная матрица размера n.\n");
+    fprintf(f, "%s", "РСЃС…РѕРґРЅР°СЏ РєРІР°РґСЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р° СЂР°Р·РјРµСЂР° n.\n");
     fclose(f);
   
    
@@ -33,7 +30,7 @@ int main() {
   
     FILE* fr;
     fr = fopen("matrixx.txt", "a+");
-    fprintf(fr, "%s", "Обратная матрица к исходной размера n.\n");
+    fprintf(fr, "%s", "РћР±СЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р° Рє РёСЃС…РѕРґРЅРѕР№ СЂР°Р·РјРµСЂР° n.\n");
     fclose(fr);
     write2MATRIXXToFile(inverseMatrix, n, "matrixx.txt");
 
