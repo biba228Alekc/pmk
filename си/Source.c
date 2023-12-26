@@ -7,15 +7,15 @@ int main()
 {
     setlocale(LC_ALL, "Rus");
     int size;
-    printf("Введите размер матрицы из системы линейных уравнений: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ РјР°С‚СЂРёС†С‹ РёР· СЃРёСЃС‚РµРјС‹ Р»РёРЅРµР№РЅС‹С… СѓСЂР°РІРЅРµРЅРёР№: ");
     scanf_s("%d", &size);
-    //Матрица свободных членов
+    //РњР°С‚СЂРёС†Р° СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ
     double* matrix = initializeArray1(size);
-    //Матрица 
+    //РњР°С‚СЂРёС†Р° 
     double** matrixx = initializeMatrix(size);
-    //Определитель Матрицы
+    //РћРїСЂРµРґРµР»РёС‚РµР»СЊ РњР°С‚СЂРёС†С‹
     double determinant = determinantg(matrixx, size);
-    //Вывод ответа
+    //Р’С‹РІРѕРґ РѕС‚РІРµС‚Р°
     otvet(determinant, matrixx, size, matrix);
     return 1;
 }
