@@ -18,7 +18,7 @@ void func(int sum) {
     printf("GG\n");
 }
 
-// Функция для измерения времени работы другой функции
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РёР·РјРµСЂРµРЅРёСЏ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹ С„СѓРЅРєС†РёРё
 void time_func(void (*func)(int), int sum) {
     clock_t start, end;
     double time;
