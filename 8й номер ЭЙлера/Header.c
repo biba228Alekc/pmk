@@ -33,8 +33,9 @@ void calculate_composition(const char* num, int sequence) {
     printf("Otvet %lld\n", composition);
 }
 
-// Функция для измерения времени работы функции
-void measure_time(void (*func)(const char* , int), const char* num, int sequence) {
+// Функция для измерения времени работы другой функции
+void time_func(void (*func)(const char* , int), const char* num, int sequence) 
+{
     clock_t start, end;
     double time;
 
