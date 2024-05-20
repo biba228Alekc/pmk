@@ -16,14 +16,14 @@ long long my_strlen(const char* str) {
 
 void calculate_composition(const char* num, int sequence) {
     long long composition = 0;
-    long long length = my_strlen(num);//количество символов в строке
+    long long length = my_strlen(num);//РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РІ СЃС‚СЂРѕРєРµ
 
-    for (int i = 0; i <= length-sequence; i++) //цикл идет до конца строки
+    for (int i = 0; i <= length-sequence; i++)
     {
         long long mult = 1;
-        for (int j = 0; j < sequence; j++) //умножает по 13 элементов в строке
+        for (int j = 0; j < sequence; j++) //СѓРјРЅРѕР¶Р°РµС‚ РїРѕ 13 СЌР»РµРјРµРЅС‚РѕРІ РІ СЃС‚СЂРѕРєРµ
         {
-            mult *= num[i + j] - '0';// Преобразуем символ цифры в числовое значение по индексу i+j ;
+            mult *= num[i + j] - '0';// РїСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃРёРјРІРѕР» С†РёС„СЂС‹ РІ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕ РёРЅРґРµРєСЃСѓ i+j 
         }
         if (mult > composition) 
         {
@@ -33,7 +33,7 @@ void calculate_composition(const char* num, int sequence) {
     printf("Otvet %lld\n", composition);
 }
 
-// Функция для измерения времени работы другой функции
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РёР·РјРµСЂРµРЅРёСЏ РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹ С„СѓРЅРєС†РёРё
 void measure_time(void (*func)(const char* , int), const char* num, int sequence) {
     clock_t start, end;
     double time;
