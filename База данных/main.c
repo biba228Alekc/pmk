@@ -1,5 +1,3 @@
-// main.c
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "Circle.h"
@@ -15,20 +13,20 @@
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    CircleDatabase* database = create_circle_database(10); // Начальная емкость 10
+    CircleDatabase* database = create_circle_database(10); // РќР°С‡Р°Р»СЊРЅР°СЏ РµРјРєРѕСЃС‚СЊ 10
     int choice;
 
     do {
-        printf("\n=== Управление базой данных кругов ===\n");
-        printf("1. Добавить круг\n");
-        printf("2. Изменить круг\n");
-        printf("3. Удалить круг\n");
-        printf("4. Найти круг по цвету\n");
-        printf("5. Найти круг по радиусу\n");
-        printf("6. Сортировать круги\n");
-        printf("7. Вывести базу данных\n");
-        printf("0. Выход\n");
-        printf("Введите ваш выбор: ");
+        printf("\n=== РЈРїСЂР°РІР»РµРЅРёРµ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ ===\n");
+        printf("1. Р”РѕР±Р°РІРёС‚СЊ РєСЂСѓРі\n");
+        printf("2. РР·РјРµРЅРёС‚СЊ РєСЂСѓРі\n");
+        printf("3. РЈРґР°Р»РёС‚СЊ РєСЂСѓРі\n");
+        printf("4. РќР°Р№С‚Рё РєСЂСѓРі РїРѕ С†РІРµС‚Сѓ\n");
+        printf("5. РќР°Р№С‚Рё РєСЂСѓРі РїРѕ СЂР°РґРёСѓСЃСѓ\n");
+        printf("6. РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РєСЂСѓРіРё\n");
+        printf("7. Р’С‹РІРµСЃС‚Рё Р±Р°Р·Сѓ РґР°РЅРЅС‹С…\n");
+        printf("0. Р’С‹С…РѕРґ\n");
+        printf("Р’РІРµРґРёС‚Рµ РІР°С€ РІС‹Р±РѕСЂ: ");
         scanf_s("%d", &choice);
 
         switch (choice) {
@@ -54,14 +52,14 @@ int main() {
             print_circle_database(database);
             break;
         case 0:
-            printf("Выход...\n");
+            printf("Р’С‹С…РѕРґ...\n");
             break;
         default:
-            printf("Неверный выбор\n");
+            printf("РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ\n");
             break;
         }
 
-        clear_input_buffer(); // Очищаем буфер ввода после каждой операции
+        clear_input_buffer(); // РћС‡РёС‰Р°РµРј Р±СѓС„РµСЂ РІРІРѕРґР° РїРѕСЃР»Рµ РєР°Р¶РґРѕР№ РѕРїРµСЂР°С†РёРё
 
     } while (choice != 0);
 
