@@ -6,31 +6,31 @@
 #include <string.h>
 #include <math.h>
 
-// Закрытая структура круга
+// Р—Р°РєСЂС‹С‚Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РєСЂСѓРіР°
 typedef struct Circle Circle;
 
-// Создание нового круга
+// РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РєСЂСѓРіР°
 Circle* create_circle(float radius, float x, float y, const char* color);
 
-// Вычисление площади круга
+// Р’С‹С‡РёСЃР»РµРЅРёРµ РїР»РѕС‰Р°РґРё РєСЂСѓРіР°
 float calculate_circle_area(const Circle* circle);
 
-// Вычисление периметра круга
+// Р’С‹С‡РёСЃР»РµРЅРёРµ РїРµСЂРёРјРµС‚СЂР° РєСЂСѓРіР°
 float calculate_circle_perimeter(const Circle* circle);
 
-// Изменение параметров круга
+// РР·РјРµРЅРµРЅРёРµ РїР°СЂР°РјРµС‚СЂРѕРІ РєСЂСѓРіР°
 void update_circle(Circle* circle, float radius, float x, float y, const char* color);
 
-// Вывод информации о круге
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєСЂСѓРіРµ
 void print_circle_info(const Circle* circle);
 
-// Освобождение памяти, выделенной для круга
+// РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё, РІС‹РґРµР»РµРЅРЅРѕР№ РґР»СЏ РєСЂСѓРіР°
 void free_circle(Circle* circle);
 
-// Получение радиуса круга
+// РџРѕР»СѓС‡РµРЅРёРµ СЂР°РґРёСѓСЃР° РєСЂСѓРіР°
 float get_circle_radius(const Circle* circle);
 
-// Получение цвета круга
+// РџРѕР»СѓС‡РµРЅРёРµ С†РІРµС‚Р° РєСЂСѓРіР°
 const char* get_circle_color(const Circle* circle);
 
 #endif /* CIRCLE_H */
