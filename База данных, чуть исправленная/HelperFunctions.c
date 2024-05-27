@@ -1,5 +1,3 @@
-/* HelperFunctions.c */
-
 #include "HelperFunctions.h"
 #include <stdio.h>
 #pragma warning(disable : 4996)
