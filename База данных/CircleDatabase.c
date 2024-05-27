@@ -1,5 +1,3 @@
-// CircleDatabase.c
-
 #include "CircleDatabase.h"
 #include "Circle.h"
 #include <stdio.h>
@@ -7,23 +5,23 @@
 #pragma warning(disable : 4996)
 
 
-// Определение закрытой структуры базы данных кругов
+// РћРїСЂРµРґРµР»РµРЅРёРµ Р·Р°РєСЂС‹С‚РѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 struct CircleDatabase {
-    Circle** circles;  // Указатель на массив указателей на круги
-    size_t size;      // Текущее количество кругов
-    size_t capacity;  // Емкость массива кругов
+    Circle** circles;  // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° РєСЂСѓРіРё
+    size_t size;      // РўРµРєСѓС‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєСЂСѓРіРѕРІ
+    size_t capacity;  // Р•РјРєРѕСЃС‚СЊ РјР°СЃСЃРёРІР° РєСЂСѓРіРѕРІ
 };
 
-// Создание новой базы данных кругов
+// РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 CircleDatabase* create_circle_database(size_t capacity) {
     CircleDatabase* database = malloc(sizeof(CircleDatabase));
     if (database == NULL) {
-        fprintf(stderr, "Ошибка выделения памяти\n");
+        fprintf(stderr, "РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
         exit(EXIT_FAILURE);
     }
     database->circles = malloc(capacity * sizeof(Circle*));
     if (database->circles == NULL) {
-        fprintf(stderr, "Ошибка выделения памяти\n");
+        fprintf(stderr, "РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
         exit(EXIT_FAILURE);
     }
     database->size = 0;
@@ -31,7 +29,7 @@ CircleDatabase* create_circle_database(size_t capacity) {
     return database;
 }
 
-// Освобождение памяти, выделенной для базы данных кругов
+// РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё, РІС‹РґРµР»РµРЅРЅРѕР№ РґР»СЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 void free_circle_database(CircleDatabase* database) {
     for (size_t i = 0; i < database->size; ++i) {
         free_circle(database->circles[i]);
@@ -40,24 +38,24 @@ void free_circle_database(CircleDatabase* database) {
     free(database);
 }
 
-// Добавление круга в базу данных из консоли
+// Р”РѕР±Р°РІР»РµРЅРёРµ РєСЂСѓРіР° РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РёР· РєРѕРЅСЃРѕР»Рё
 void add_circle_from_console(CircleDatabase* database) {
     float radius, x, y;
     char color[20];
-    printf("Введите радиус: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°РґРёСѓСЃ: ");
     scanf("%f", &radius);
-    printf("Введите координату x: ");
+    printf("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚Сѓ x: ");
     scanf("%f", &x);
-    printf("Введите координату y: ");
+    printf("Р’РІРµРґРёС‚Рµ РєРѕРѕСЂРґРёРЅР°С‚Сѓ y: ");
     scanf("%f", &y);
-    printf("Введите цвет: ");
+    printf("Р’РІРµРґРёС‚Рµ С†РІРµС‚: ");
     scanf("%19s", color);
     if (database->size >= database->capacity) {
-        // Увеличиваем емкость массива кругов
-        database->capacity += 10; // Например, увеличим емкость на 10 элементов
+        // РЈРІРµР»РёС‡РёРІР°РµРј РµРјРєРѕСЃС‚СЊ РјР°СЃСЃРёРІР° РєСЂСѓРіРѕРІ
+        database->capacity += 10; // РќР°РїСЂРёРјРµСЂ, СѓРІРµР»РёС‡РёРј РµРјРєРѕСЃС‚СЊ РЅР° 10 СЌР»РµРјРµРЅС‚РѕРІ
         database->circles = realloc(database->circles, database->capacity * sizeof(Circle*));
         if (database->circles == NULL) {
-            fprintf(stderr, "Ошибка перевыделения памяти\n");
+            fprintf(stderr, "РћС€РёР±РєР° РїРµСЂРµРІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
             exit(EXIT_FAILURE);
         }
     }
@@ -65,32 +63,32 @@ void add_circle_from_console(CircleDatabase* database) {
     database->circles[database->size++] = new_circle;
 }
 
-// Изменение данных о круге через консоль
+// РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С… Рѕ РєСЂСѓРіРµ С‡РµСЂРµР· РєРѕРЅСЃРѕР»СЊ
 void update_circle_from_console(CircleDatabase* database) {
     int index;
-    printf("Введите индекс круга для изменения: ");
+    printf("Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ РєСЂСѓРіР° РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ: ");
     scanf("%d", &index);
     if (index < 0 || index >= database->size) {
-        printf("Неверный индекс\n");
+        printf("РќРµРІРµСЂРЅС‹Р№ РёРЅРґРµРєСЃ\n");
         return;
     }
     float radius, x, y;
     char color[20];
-    printf("Введите новый радиус: ");
+    printf("Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ СЂР°РґРёСѓСЃ: ");
     scanf("%f", &radius);
-    printf("Введите новую координату x: ");
+    printf("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ x: ");
     scanf("%f", &x);
-    printf("Введите новую координату y: ");
+    printf("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ y: ");
     scanf("%f", &y);
-    printf("Введите новый цвет: ");
+    printf("Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ С†РІРµС‚: ");
     scanf("%19s", color);
     update_circle(database->circles[index], radius, x, y, color);
 }
 
-// Удаление круга или кругов по данным, введенным из консоли
+// РЈРґР°Р»РµРЅРёРµ РєСЂСѓРіР° РёР»Рё РєСЂСѓРіРѕРІ РїРѕ РґР°РЅРЅС‹Рј, РІРІРµРґРµРЅРЅС‹Рј РёР· РєРѕРЅСЃРѕР»Рё
 void delete_circle_from_console(CircleDatabase* database) {
     char color[20];
-    printf("Введите цвет круга(ов) для удаления: ");
+    printf("Р’РІРµРґРёС‚Рµ С†РІРµС‚ РєСЂСѓРіР°(РѕРІ) РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ");
     scanf("%19s", color);
     size_t i = 0;
     while (i < database->size) {
@@ -107,13 +105,13 @@ void delete_circle_from_console(CircleDatabase* database) {
     }
 }
 
-// Поиск круга по данным, введенным из консоли с использованием бинарного поиска
+// РџРѕРёСЃРє РєСЂСѓРіР° РїРѕ РґР°РЅРЅС‹Рј, РІРІРµРґРµРЅРЅС‹Рј РёР· РєРѕРЅСЃРѕР»Рё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Р±РёРЅР°СЂРЅРѕРіРѕ РїРѕРёСЃРєР°
 void find_circle_from_console(const CircleDatabase* database) {
     char color[20];
-    printf("Введите цвет круга для поиска: ");
+    printf("Р’РІРµРґРёС‚Рµ С†РІРµС‚ РєСЂСѓРіР° РґР»СЏ РїРѕРёСЃРєР°: ");
     scanf("%19s", color);
 
-    // Бинарный поиск по цвету
+    // Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє РїРѕ С†РІРµС‚Сѓ
     int left = 0, right = database->size - 1;
     int found = 0;
     while (left <= right) {
@@ -132,11 +130,11 @@ void find_circle_from_console(const CircleDatabase* database) {
         }
     }
     if (!found) {
-        printf("Круг с цветом %s не найден\n", color);
+        printf("РљСЂСѓРі СЃ С†РІРµС‚РѕРј %s РЅРµ РЅР°Р№РґРµРЅ\n", color);
     }
 }
 
-// Сортировка Шелла по радиусу
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РЁРµР»Р»Р° РїРѕ СЂР°РґРёСѓСЃСѓ
 void shell_sort_by_radius(CircleDatabase* database) {
     size_t n = database->size;
     for (size_t gap = n / 2; gap > 0; gap /= 2) {
@@ -152,13 +150,13 @@ void shell_sort_by_radius(CircleDatabase* database) {
 }
 
 
-// Поиск круга по радиусу с использованием бинарного поиска
+// РџРѕРёСЃРє РєСЂСѓРіР° РїРѕ СЂР°РґРёСѓСЃСѓ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј Р±РёРЅР°СЂРЅРѕРіРѕ РїРѕРёСЃРєР°
 void find_circle_by_radius(const CircleDatabase* database) {
     float radius;
-    printf("Введите радиус круга для поиска: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°РґРёСѓСЃ РєСЂСѓРіР° РґР»СЏ РїРѕРёСЃРєР°: ");
     scanf("%f", &radius);
 
-    // Бинарный поиск по радиусу
+    // Р‘РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє РїРѕ СЂР°РґРёСѓСЃСѓ
     int left = 0, right = database->size - 1;
     int found = 0;
     while (left <= right) {
@@ -176,11 +174,11 @@ void find_circle_by_radius(const CircleDatabase* database) {
         }
     }
     if (!found) {
-        printf("Круг с радиусом %.2f не найден\n", radius);
+        printf("РљСЂСѓРі СЃ СЂР°РґРёСѓСЃРѕРј %.2f РЅРµ РЅР°Р№РґРµРЅ\n", radius);
     }
 }
 
-// Сортировка Шелла по цвету
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РЁРµР»Р»Р° РїРѕ С†РІРµС‚Сѓ
 void shell_sort_by_color(CircleDatabase* database) {
     size_t n = database->size;
     for (size_t gap = n / 2; gap > 0; gap /= 2) {
@@ -195,13 +193,13 @@ void shell_sort_by_color(CircleDatabase* database) {
     }
 }
 
-// Сортировка данных по выбранному полю
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РґР°РЅРЅС‹С… РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїРѕР»СЋ
 void sort_circles_by_field(CircleDatabase* database) {
     int choice;
-    printf("Выберите поле для сортировки:\n");
-    printf("1. Радиус\n");
-    printf("2. Цвет\n");
-    printf("Введите ваш выбор: ");
+    printf("Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»Рµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё:\n");
+    printf("1. Р Р°РґРёСѓСЃ\n");
+    printf("2. Р¦РІРµС‚\n");
+    printf("Р’РІРµРґРёС‚Рµ РІР°С€ РІС‹Р±РѕСЂ: ");
     scanf("%d", &choice);
 
     switch (choice) {
@@ -212,16 +210,16 @@ void sort_circles_by_field(CircleDatabase* database) {
         shell_sort_by_color(database);
         break;
     default:
-        printf("Неверный выбор\n");
+        printf("РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ\n");
         break;
     }
 }
 
-// Вывод базы данных на консоль
+// Р’С‹РІРѕРґ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РЅР° РєРѕРЅСЃРѕР»СЊ
 void print_circle_database(const CircleDatabase* database) {
-    printf("База данных кругов:\n");
+    printf("Р‘Р°Р·Р° РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ:\n");
     for (size_t i = 0; i < database->size; ++i) {
-        printf("Круг %zu:\n", i + 1);
+        printf("РљСЂСѓРі %zu:\n", i + 1);
         print_circle_info(database->circles[i]);
         printf("\n");
     }
