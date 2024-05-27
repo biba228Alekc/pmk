@@ -3,49 +3,49 @@
 
 #include "Circle.h"
 
-// Закрытая структура базы данных кругов
+// Р—Р°РєСЂС‹С‚Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 typedef struct CircleDatabase CircleDatabase;
 
-// Создание новой базы данных кругов
+// РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 CircleDatabase* create_circle_database(size_t capacity);
 
-// Освобождение памяти, выделенной для базы данных кругов
+// РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїР°РјСЏС‚Рё, РІС‹РґРµР»РµРЅРЅРѕР№ РґР»СЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєСЂСѓРіРѕРІ
 void free_circle_database(CircleDatabase* database);
 
-// Добавление круга в базу данных из консоли
+// Р”РѕР±Р°РІР»РµРЅРёРµ РєСЂСѓРіР° РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РёР· РєРѕРЅСЃРѕР»Рё
 void add_circle_from_console(CircleDatabase* database);
 
-// Изменение данных о круге через консоль
+// РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С… Рѕ РєСЂСѓРіРµ С‡РµСЂРµР· РєРѕРЅСЃРѕР»СЊ
 void update_circle_from_console(CircleDatabase* database);
 
-// Удаление круга или кругов по данным, введенным из консоли
+// РЈРґР°Р»РµРЅРёРµ РєСЂСѓРіР° РёР»Рё РєСЂСѓРіРѕРІ РїРѕ РґР°РЅРЅС‹Рј, РІРІРµРґРµРЅРЅС‹Рј РёР· РєРѕРЅСЃРѕР»Рё
 void delete_circle_from_console(CircleDatabase* database);
 
-// Удаление круга по радиусу
+// РЈРґР°Р»РµРЅРёРµ РєСЂСѓРіР° РїРѕ СЂР°РґРёСѓСЃСѓ
 void delete_circle_by_radius(CircleDatabase* database);
 
-// Удаление круга по координате x
+// РЈРґР°Р»РµРЅРёРµ РєСЂСѓРіР° РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Рµ x
 void delete_circle_by_x(CircleDatabase* database);
 
-// Удаление круга по координате y
+// РЈРґР°Р»РµРЅРёРµ РєСЂСѓРіР° РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Рµ y
 void delete_circle_by_y(CircleDatabase* database);
 
-// Поиск круга по данным, введенным из консоли
+// РџРѕРёСЃРє РєСЂСѓРіР° РїРѕ РґР°РЅРЅС‹Рј, РІРІРµРґРµРЅРЅС‹Рј РёР· РєРѕРЅСЃРѕР»Рё
 void find_circle_from_console(const CircleDatabase* database);
 
-// Поиск круга по радиусу
+// РџРѕРёСЃРє РєСЂСѓРіР° РїРѕ СЂР°РґРёСѓСЃСѓ
 void find_circle_by_radius(const CircleDatabase* database);
 
-// Сортировка данных по выбранному полю
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РґР°РЅРЅС‹С… РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїРѕР»СЋ
 void sort_circles_by_field(CircleDatabase* database);
 
-// Сортировка кругов по координате x
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РєСЂСѓРіРѕРІ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Рµ x
 void shell_sort_by_x(CircleDatabase* database);
 
-// Сортировка кругов по координате y
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РєСЂСѓРіРѕРІ РїРѕ РєРѕРѕСЂРґРёРЅР°С‚Рµ y
 void shell_sort_by_y(CircleDatabase* database);
 
-// Вывод базы данных на консоль
+// Р’С‹РІРѕРґ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РЅР° РєРѕРЅСЃРѕР»СЊ
 void print_circle_database(const CircleDatabase* database);
 
 #endif /* CIRCLE_DATABASE_H */
