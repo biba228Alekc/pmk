@@ -1,88 +1,86 @@
-// Circle.c
-
 #include "Circle.h"
 #pragma warning(disable : 4996)
 #define M_PI 3.14159265358979323846
 
-// Îïðåäåëåíèå çàêðûòîé ñòðóêòóðû êðóãà
+// ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð¾Ð¹ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹ ÐºÑ€ÑƒÐ³Ð°
 struct Circle {
     float radius;
-    float x;          // Êîîðäèíàòà öåíòðà x
-    float y;          // Êîîðäèíàòà öåíòðà y
-    char color[20];   // Öâåò êðóãà
+    float x;          // ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð° Ñ†ÐµÐ½Ñ‚Ñ€Ð° x
+    float y;          // ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð° Ñ†ÐµÐ½Ñ‚Ñ€Ð° y
+    char color[20];   // Ð¦Ð²ÐµÑ‚ ÐºÑ€ÑƒÐ³Ð°
 };
 
-// Ñîçäàíèå íîâîãî êðóãà
+// Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÐºÑ€ÑƒÐ³Ð°
 Circle* create_circle(float radius, float x, float y, const char* color) {
     Circle* circle = malloc(sizeof(Circle));
     if (circle == NULL) {
-        fprintf(stderr, "Îøèáêà âûäåëåíèÿ ïàìÿòè\n");
+        fprintf(stderr, "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð¿Ð°Ð¼ÑÑ‚Ð¸\n");
         exit(EXIT_FAILURE);
     }
     circle->radius = radius;
     circle->x = x;
     circle->y = y;
     strncpy(circle->color, color, sizeof(circle->color));
-    circle->color[sizeof(circle->color) - 1] = '\0'; // Óáåæäàåìñÿ, ÷òî ñòðîêà çàâåðøåíà íóëåâûì ñèìâîëîì
+    circle->color[sizeof(circle->color) - 1] = '\0'; // Ð£Ð±ÐµÐ¶Ð´Ð°ÐµÐ¼ÑÑ, Ñ‡Ñ‚Ð¾ ÑÑ‚Ñ€Ð¾ÐºÐ° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð° Ð½ÑƒÐ»ÐµÐ²Ñ‹Ð¼ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð¼
     return circle;
 }
 
-// Âû÷èñëåíèå ïëîùàäè êðóãà
+// Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ð¿Ð»Ð¾Ñ‰Ð°Ð´Ð¸ ÐºÑ€ÑƒÐ³Ð°
 float calculate_circle_area(const Circle* circle) {
     return M_PI * circle->radius * circle->radius;
 }
 
-// Âû÷èñëåíèå ïåðèìåòðà êðóãà
+// Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ð¿ÐµÑ€Ð¸Ð¼ÐµÑ‚Ñ€Ð° ÐºÑ€ÑƒÐ³Ð°
 float calculate_circle_perimeter(const Circle* circle) {
     return 2 * M_PI * circle->radius;
 }
 
-// Èçìåíåíèå ïàðàìåòðîâ êðóãà
+// Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² ÐºÑ€ÑƒÐ³Ð°
 void update_circle(Circle* circle, float radius, float x, float y, const char* color) {
     circle->radius = radius;
     circle->x = x;
     circle->y = y;
     strncpy(circle->color, color, sizeof(circle->color));
-    circle->color[sizeof(circle->color) - 1] = '\0'; // Óáåæäàåìñÿ, ÷òî ñòðîêà çàâåðøåíà íóëåâûì ñèìâîëîì
+    circle->color[sizeof(circle->color) - 1] = '\0'; // Ð£Ð±ÐµÐ¶Ð´Ð°ÐµÐ¼ÑÑ, Ñ‡Ñ‚Ð¾ ÑÑ‚Ñ€Ð¾ÐºÐ° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð° Ð½ÑƒÐ»ÐµÐ²Ñ‹Ð¼ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð¼
 }
 
-// Âûâîä èíôîðìàöèè î êðóãå
+// Ð’Ñ‹Ð²Ð¾Ð´ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ ÐºÑ€ÑƒÐ³Ðµ
 void print_circle_info(const Circle* circle) {
-    printf("Èíôîðìàöèÿ î êðóãå:\n");
-    printf("Ðàäèóñ: %.2f\n", circle->radius);
-    printf("Êîîðäèíàòû öåíòðà: (%.2f, %.2f)\n", circle->x, circle->y);
-    printf("Öâåò: %s\n", circle->color);
-    printf("Ðàññòîÿíèå äî íà÷àëà êîîðäèíàò: %.2f\n", calculate_distance_from_origin(circle));
-    printf("Ïëîùàäü: %.2f\n", calculate_circle_area(circle));
-    printf("Ïåðèìåòð: %.2f\n", calculate_circle_perimeter(circle));
+    printf("Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ ÐºÑ€ÑƒÐ³Ðµ:\n");
+    printf("Ð Ð°Ð´Ð¸ÑƒÑ: %.2f\n", circle->radius);
+    printf("ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ Ñ†ÐµÐ½Ñ‚Ñ€Ð°: (%.2f, %.2f)\n", circle->x, circle->y);
+    printf("Ð¦Ð²ÐµÑ‚: %s\n", circle->color);
+    printf("Ð Ð°ÑÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð´Ð¾ Ð½Ð°Ñ‡Ð°Ð»Ð° ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚: %.2f\n", calculate_distance_from_origin(circle));
+    printf("ÐŸÐ»Ð¾Ñ‰Ð°Ð´ÑŒ: %.2f\n", calculate_circle_area(circle));
+    printf("ÐŸÐµÑ€Ð¸Ð¼ÐµÑ‚Ñ€: %.2f\n", calculate_circle_perimeter(circle));
 }
 
-// Îñâîáîæäåíèå ïàìÿòè, âûäåëåííîé äëÿ êðóãà
+// ÐžÑÐ²Ð¾Ð±Ð¾Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð¿Ð°Ð¼ÑÑ‚Ð¸, Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ñ ÐºÑ€ÑƒÐ³Ð°
 void free_circle(Circle* circle) {
     free(circle);
 }
 
-// Ïîëó÷åíèå ðàäèóñà êðóãà
+// ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ñ€Ð°Ð´Ð¸ÑƒÑÐ° ÐºÑ€ÑƒÐ³Ð°
 float get_circle_radius(const Circle* circle) {
     return circle->radius;
 }
 
-// Ïîëó÷åíèå öâåòà êðóãà
+// ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ñ†Ð²ÐµÑ‚Ð° ÐºÑ€ÑƒÐ³Ð°
 const char* get_circle_color(const Circle* circle) {
     return circle->color;
 }
 
-// Âû÷èñëåíèå ðàññòîÿíèÿ îò öåíòðà êðóãà äî íà÷àëà êîîðäèíàò
+// Ð’Ñ‹Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸Ðµ Ñ€Ð°ÑÑÑ‚Ð¾ÑÐ½Ð¸Ñ Ð¾Ñ‚ Ñ†ÐµÐ½Ñ‚Ñ€Ð° ÐºÑ€ÑƒÐ³Ð° Ð´Ð¾ Ð½Ð°Ñ‡Ð°Ð»Ð° ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚
 float calculate_distance_from_origin(const Circle* circle) {
     return sqrt(circle->x * circle->x + circle->y * circle->y);
 }
 
-// Ïîëó÷åíèå êîîðäèíàòû x
+// ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ x
 float get_circle_x(const Circle* circle) {
     return circle->x;
 }
 
-// Ïîëó÷åíèå êîîðäèíàòû y
+// ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ y
 float get_circle_y(const Circle* circle) {
     return circle->y;
 }
