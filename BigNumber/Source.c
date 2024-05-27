@@ -13,47 +13,47 @@ int main() {
     BigNumber* bn2 = CreateBN(str2);
 
     if (bn1 == NULL || bn2 == NULL) {
-        printf("bn1 или bn2 равен NULL!\n");
+        printf("bn1 РёР»Рё bn2 СЂР°РІРµРЅ NULL!\n");
         return 1;
     }
 
-    printf("Первое число: ");
+    printf("РџРµСЂРІРѕРµ С‡РёСЃР»Рѕ: ");
     PrintBN(bn1);
-    printf("Второе число: ");
+    printf("Р’С‚РѕСЂРѕРµ С‡РёСЃР»Рѕ: ");
     PrintBN(bn2);
 
-    int выбор;
-    printf("\nСделайте выбор:\n");
-    printf("1. Сложение\n");
-    printf("2. Умножение\n");
-    printf("3. Деление bn2 на bn1\n");
-    printf("4. Деление bn1 на bn2 :\n");
-    printf("5. Умножение на константу\n");
-    scanf_s("%d", &выбор);
+    int РІС‹Р±РѕСЂ;
+    printf("\nРЎРґРµР»Р°Р№С‚Рµ РІС‹Р±РѕСЂ:\n");
+    printf("1. РЎР»РѕР¶РµРЅРёРµ\n");
+    printf("2. РЈРјРЅРѕР¶РµРЅРёРµ\n");
+    printf("3. Р”РµР»РµРЅРёРµ bn2 РЅР° bn1\n");
+    printf("4. Р”РµР»РµРЅРёРµ bn1 РЅР° bn2 :\n");
+    printf("5. РЈРјРЅРѕР¶РµРЅРёРµ РЅР° РєРѕРЅСЃС‚Р°РЅС‚Сѓ\n");
+    scanf_s("%d", &РІС‹Р±РѕСЂ);
 
-    switch (выбор) {
+    switch (РІС‹Р±РѕСЂ) {
     case 1:
-        printf("\nВыполняем сложение:\n");
+        printf("\nР’С‹РїРѕР»РЅСЏРµРј СЃР»РѕР¶РµРЅРёРµ:\n");
         BigNumber* sum = SumBN(bn1, bn2);
-        printf("Сумма: ");
+        printf("РЎСѓРјРјР°: ");
         PrintBN(sum);
         DeleteBN(&sum);
         break;
 
     case 2:
-        printf("\nВыполняем умножение:\n");
+        printf("\nР’С‹РїРѕР»РЅСЏРµРј СѓРјРЅРѕР¶РµРЅРёРµ:\n");
         BigNumber* mult = MultiplyBN(bn1, bn2);
-        printf("Произведение: ");
+        printf("РџСЂРѕРёР·РІРµРґРµРЅРёРµ: ");
         PrintBN(mult);
         DeleteBN(&mult);
         break;
 
     case 3:
-        printf("\nВыполняем деление bn2 на bn1 :\n");
+        printf("\nР’С‹РїРѕР»РЅСЏРµРј РґРµР»РµРЅРёРµ bn2 РЅР° bn1 :\n");
         BigNumber* div = DivideBN(CopyBN(bn2), CopyBN(bn1));
         if (bn1->digits[0] == 0)
         {
-            printf("нельзя (");
+            printf("РЅРµР»СЊР·СЏ (");
             break;
         }
         if (bn1->is_negative == bn2->is_negative)
@@ -70,18 +70,18 @@ int main() {
             div->is_negative = false;
         }
         
-        printf("Частное: ");
+        printf("Р§Р°СЃС‚РЅРѕРµ: ");
         PrintBN(div);
         DeleteBN(&div);
         break;
 
 
     case 4:
-        printf("\nВыполняем деление bn1 на bn2 :\n");
+        printf("\nР’С‹РїРѕР»РЅСЏРµРј РґРµР»РµРЅРёРµ bn1 РЅР° bn2 :\n");
         BigNumber* div1 = DivideBN(CopyBN(bn1), CopyBN(bn2));
         if (bn2->digits[0] == 0)
         {
-            printf("нельзя (");
+            printf("РЅРµР»СЊР·СЏ (");
             break;
         }
         if (bn1->is_negative == bn2->is_negative)
@@ -98,45 +98,45 @@ int main() {
             div1->is_negative = false;
         }
        
-        printf("Частное: ");
+        printf("Р§Р°СЃС‚РЅРѕРµ: ");
         PrintBN(div1);
         DeleteBN(&div1);
         break;
 
     case 5:
-        printf("Введите константу для умножения:\n");
+        printf("Р’РІРµРґРёС‚Рµ РєРѕРЅСЃС‚Р°РЅС‚Сѓ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ:\n");
         int multipass;
         int counter;
         scanf_s("%d", &multipass);
-        printf("Введите 1-если хотите умножить на bn1\n");
-        printf("Введите 2-если хотите умножить на bn2\n");
+        printf("Р’РІРµРґРёС‚Рµ 1-РµСЃР»Рё С…РѕС‚РёС‚Рµ СѓРјРЅРѕР¶РёС‚СЊ РЅР° bn1\n");
+        printf("Р’РІРµРґРёС‚Рµ 2-РµСЃР»Рё С…РѕС‚РёС‚Рµ СѓРјРЅРѕР¶РёС‚СЊ РЅР° bn2\n");
         scanf_s("%d", &counter);
         if (counter == 1) 
         {
-            printf("\nВыполняем умножение на введенную константу:\n");
+            printf("\nР’С‹РїРѕР»РЅСЏРµРј СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РІРІРµРґРµРЅРЅСѓСЋ РєРѕРЅСЃС‚Р°РЅС‚Сѓ:\n");
             BigNumber* multonli = MultiplyBNOnli(bn1, multipass);
-            printf("Произведение: ");
+            printf("РџСЂРѕРёР·РІРµРґРµРЅРёРµ: ");
             PrintBN(multonli);
             DeleteBN(&multonli);
             break;
         }
         if (counter == 2) {
-            printf("\nВыполняем умножение на введенную константу:\n");
+            printf("\nР’С‹РїРѕР»РЅСЏРµРј СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РІРІРµРґРµРЅРЅСѓСЋ РєРѕРЅСЃС‚Р°РЅС‚Сѓ:\n");
             BigNumber* multonli = MultiplyBNOnli(bn2, multipass);
-            printf("Произведение: ");
+            printf("РџСЂРѕРёР·РІРµРґРµРЅРёРµ: ");
             PrintBN(multonli);
             DeleteBN(&multonli);
             break;
         }
-        printf("Введите грамотное значение для выбора пж<3");
+        printf("Р’РІРµРґРёС‚Рµ РіСЂР°РјРѕС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ РІС‹Р±РѕСЂР° РїР¶<3");
         break;
 
     default:
-        printf("Неверный выбор!\n");
+        printf("РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ!\n");
         break;
     }
 
-    // Очистка
+    // РћС‡РёСЃС‚РєР°
     DeleteBN(&bn1);
     DeleteBN(&bn2);
 
